@@ -21,10 +21,11 @@ const countLivingNeighbours = (grid, x, y) => {
 	let neighboursCount = 0;
 	for (let i = -1; i < 2; i += 1) {
 		for (let j = -1; j < 2; j += 1) {
-			const isCurrentCell = i == 0 && j == 0;
 			// if we are at the edges, the value would be undefined
 			// since we are counting living cells, we can count undefined as 0
 			const value = grid?.[x + i]?.[y + j] ?? 0;
+			// we exclude current cell (when both indices are at 0)
+			const isCurrentCell = i === 0 && j === 0;
 			if (!isCurrentCell) {
 				// console.log('neighbours cells are', value);
 				sum += value;
@@ -38,25 +39,22 @@ const countLivingNeighbours = (grid, x, y) => {
 	return sum;
 };
 
-let currentGrid;
-
-const setup = () => {
+// return starting grid
+const getStartingGrid = () => {
 	// empty matrix
 	const empty = create2DArray(width, height);
 
 	// start by filling the currentState with random values
-	currentGrid = empty.map((row) => {
+	const currentGrid = empty.map((row) => {
 		return row.map(() => {
 			return getRandomState();
 		})
 	});
 
-	console.table(currentGrid);
+	return currentGrid;
 }
 
-const computeNextGeneration = () => {
-	// todo figure out how to pass currentGrid as a parameter
-
+const computeNextGeneration = (currentGrid) => {
 	// loop through current array and count the neighbours
 	// and while doing it update the next array with the correct values
 	const nextGrid = currentGrid.map((row, i) => {
@@ -80,17 +78,21 @@ const computeNextGeneration = () => {
 			}
 		});
 	});
-
-	currentGrid = nextGrid;
-	console.table(currentGrid);
-
+	
 	// used to test old implementation against the new one
 	// console.log(JSON.stringify(nextGrid) === JSON.stringify(nextGrid2));
+	return nextGrid;
 }
 
-setup();
+// main program
+// initialize empty matrix with random values
+let currentGeneration = getStartingGrid();
+console.table(currentGeneration);
 
-
+// create a new generation with each click
 document.getElementById('next-generation').addEventListener('click', () => {
-	computeNextGeneration();
+	const nextGeneration = computeNextGeneration(currentGeneration);
+	// replace the old generation with the new values
+	currentGeneration = nextGeneration;
+	console.table(currentGeneration);
 });
