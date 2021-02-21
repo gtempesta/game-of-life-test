@@ -10,8 +10,9 @@ const create2DArray = (width, height) => {
 
 const getRandomState = () => {
 	const min = 0;
-  	const max = 1;
-	return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+	const max = 1;
+	// The maximum is inclusive and the minimum is inclusive
+	return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const countLivingNeighbours = (grid, x, y) => {
@@ -38,14 +39,10 @@ const countLivingNeighbours = (grid, x, y) => {
 };
 
 let currentGrid;
-let nextGrid;
 
 const setup = () => {
 	// empty matrix
 	const empty = create2DArray(width, height);
-
-	// next is empty
-	nextGrid = [...empty];
 
 	// start by filling the currentState with random values
 	currentGrid = empty.map((row) => {
@@ -54,45 +51,46 @@ const setup = () => {
 		})
 	});
 
-	console.table(nextGrid);
 	console.table(currentGrid);
 }
 
 const computeNextGeneration = () => {
+	// todo figure out how to pass currentGrid as a parameter
+
 	// loop through current array and count the neighbours
 	// and while doing it update the next array with the correct values
-	for (let i = 0; i < width; i += 1) {
-		for (let j = 0; j < height; j += 1) {
-			const currentState = currentGrid[i][j];
-			const isAlive = currentState === 1;
+	const nextGrid = currentGrid.map((row, i) => {
+		return row.map((cell, j) => {
+			const currentState = cell;
+			const isAlive = cell === 1;
 			// count live neighbours
 			const neighbours = countLivingNeighbours(currentGrid, i, j);
 			// console.log('total neighbours for cell: ', neighbours);
 
-			// all cells inherit from current state
-			nextGrid[i][j] = currentState;
-
 			// if is dead
-			if (!isAlive) {
-				if (neighbours === 3) {
-					// cell will come to life if neighbours are exactly 3
-					nextGrid[i][j] = 1;
-				}
+			if (!isAlive && neighbours === 3) {
+				// cell will come to life if neighbours are exactly 3
+				return 1;
+			} else if (isAlive && (neighbours < 2 || neighbours > 3)) {
+				// cell will die if population is fewer than 2 or more than 3
+				return 0;
+			} else {
+				// all other cells inherit from current state
+				return currentState;
 			}
+		});
+	});
 
-			// if is alive
-			if (isAlive) {
-				if (neighbours < 2 || neighbours > 3) {
-					// cell will die if population is fewer than 2 or more than 3
-					nextGrid[i][j] = 0;
-				}
-			}
-		}
-	}
-
-	// update currentGrid with data from nextGrid
 	currentGrid = nextGrid;
 	console.table(currentGrid);
+
+	// used to test old implementation against the new one
+	// console.log(JSON.stringify(nextGrid) === JSON.stringify(nextGrid2));
 }
 
 setup();
+
+
+document.getElementById('next-generation').addEventListener('click', () => {
+	computeNextGeneration();
+});
