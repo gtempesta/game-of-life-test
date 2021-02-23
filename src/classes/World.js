@@ -1,6 +1,6 @@
 // todo probably the inner grid is not needed
-import create2DArray from './utils/create2DArray';
-import getRandomState from './utils/getRandomState';
+import create2DArray from '../utils/create2DArray';
+import getRandomState from '../utils/getRandomState';
 
 class World {
 	constructor(width, height) {

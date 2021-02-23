@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import World from './World'
+import World from '../classes/World';
+import Grid from './Grid';
 import './App.css';
 
 // todo find out how to reduce spaces in GitHub visualization
@@ -23,9 +24,10 @@ function App() {
   } 
   return (
     <div className="App">
-      <header className="App-header">
+      <main className="App-main">
         <button onClick={createNextGeneration}>Next generation</button>
-      </header>
+        <Grid currentGeneration={grid} />
+      </main>
     </div>
   );
 }
