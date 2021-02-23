@@ -1,5 +1,7 @@
 // reduce
 
+// todo find out how to reduce spaces in GitHub visualization
+
 const width = 10;
 const height = 10;
 
