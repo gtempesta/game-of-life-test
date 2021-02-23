@@ -91,6 +91,14 @@ class World {
 		return this.grid;
 	}
 
+	getUpdatedGeneration(coordinates, value) {
+		const {x, y} = coordinates;
+		// todo return a new array with only this value updated
+		// otherwise react won't see the difference
+		this.grid[x][y] = value;
+		return this.grid;
+	}
+
 	// print current state
 	printCurrentGeneration() {
 		console.table(this.grid);

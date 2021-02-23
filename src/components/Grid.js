@@ -1,14 +1,19 @@
 import Cell from './Cell';
 import './Grid.css';
 
-function Grid({currentGeneration}) {
+function Grid({currentGeneration, updateCell}) {
   return (
     <div className="Grid">
-      {currentGeneration.map((row) => {
+      {currentGeneration.map((row, i) => {
         return (
-          <div className="Grid-row">
-            {row.map((cell, index) => {
-              return <Cell key={index} value={cell} />;
+          <div className="Grid-row" key={i}>
+            {row.map((cell, j) => {
+              return <Cell
+                key={`${i}-${j}`}
+                value={cell}
+                updateCell={updateCell}
+                coords={{x: i, y: j}}
+              />;
             })}
           </div>
         );
