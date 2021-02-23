@@ -53,7 +53,7 @@ class World {
 				}
 			}
 		}
-		console.log(neighboursCount);
+		// console.log(neighboursCount);
 		return sum;
 	};
 
