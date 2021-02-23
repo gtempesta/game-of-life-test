@@ -77,6 +77,14 @@ class World {
 		return nextGrid;
 	}
 
+	computeSingleCellUpdate(coordinates, value) {
+		const {x, y} = coordinates;
+		// create a new grid to help react detect the difference
+		const newGrid = JSON.parse(JSON.stringify(this.grid));
+		newGrid[x][y] = value;
+		return newGrid;
+	}
+
 	// compute a random grid and return it 
 	getFirstGeneration() {
 		this.grid = this.computeRandomGrid(this.grid);
@@ -88,6 +96,13 @@ class World {
 		// compute next generation based on a state that's passed from outside
 		// it can be easily changed to compute based on inner state
 		this.grid = this.computeNextGeneration(currentGrid);
+		return this.grid;
+	}
+
+	getUpdatedGeneration(coordinates, value) {
+		// return a new array with only this value updated
+		// otherwise react won't detect the difference
+		this.grid = this.computeSingleCellUpdate(coordinates, value);
 		return this.grid;
 	}
 
