@@ -53,7 +53,7 @@ class World {
 				}
 			}
 		}
-		// console.log(neighboursCount);
+		console.log(neighboursCount);
 		return sum;
 	};
 
@@ -107,3 +107,5 @@ class World {
 		console.table(this.grid);
 	}
 }
+
+export default World;

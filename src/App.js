@@ -1,5 +1,14 @@
 import logo from './logo.svg';
+import World from './World'
 import './App.css';
+
+const createWorld = () => {
+  // create a new world
+  // const world = new World(20, 20);
+  // let currentGrid = world.getFirstGeneration();
+  // world.printCurrentGeneration();
+  console.log('test');
+} 
 
 function App() {
   return (
@@ -17,6 +26,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={createWorld}>Next generation</button>
       </header>
     </div>
   );
