@@ -1,3 +1,4 @@
+// todo probably the inner grid is not needed
 class World {
 	constructor(width, height) {
 		this.width = width;
@@ -88,7 +89,7 @@ class World {
 	}
 
 	// compute a random grid and return it 
-	getStartingGrid() {
+	getFirstGeneration() {
 		this.grid = this.computeRandomGrid(this.grid);
 		return this.grid;
 	}
@@ -102,16 +103,7 @@ class World {
 	}
 
 	// print current state
-	printCurrentGrid() {
+	printCurrentGeneration() {
 		console.table(this.grid);
 	}
 }
-
-// create a new world
-const world = new World(20, 20);
-const currentGrid = world.getStartingGrid();
-world.printCurrentGrid();
-const nextGrid = world.getNextGeneration(currentGrid);
-world.printCurrentGrid();
-
-// todo probably the inner grid is not needed
