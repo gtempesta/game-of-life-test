@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     setGrid(world.getFirstGeneration());
     world.printCurrentGeneration();
-  }, []);
+  }, [world]);
   const createNextGeneration = () => {
     const nextGrid = world.getNextGeneration(grid);
     // replace the old generation with the new values

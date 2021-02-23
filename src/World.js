@@ -1,23 +1,12 @@
 // todo probably the inner grid is not needed
+import create2DArray from './utils/create2DArray';
+import getRandomState from './utils/getRandomState';
+
 class World {
 	constructor(width, height) {
 		this.width = width;
 		this.height = height;
-		this.grid = this.create2DArray(this.width, this.height);
-	}
-
-	// method to create an empty 2D array given width and height
-	create2DArray(width, height) {
-		// return Array(width).fill().map(()=>Array(height).fill(0))
-		return [...new Array(width)].map(() => [...new Array(height)].map(() => 0));
-	}
-
-	// return a random 0 or 1 value
-	getRandomState() {
-		const min = 0;
-		const max = 1;
-		// The maximum is inclusive and the minimum is inclusive
-		return Math.floor(Math.random() * (max - min + 1) + min);
+		this.grid = create2DArray(this.width, this.height);
 	}
 
 	// return a new grid with random paramters
@@ -25,7 +14,7 @@ class World {
 		// start by filling the currentState with random values
 		const currentGrid = grid.map((row) => {
 			return row.map(() => {
-				return this.getRandomState();
+				return getRandomState();
 			})
 		});
 
