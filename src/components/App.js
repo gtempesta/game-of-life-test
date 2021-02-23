@@ -15,19 +15,18 @@ function App() {
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     setGrid(world.getFirstGeneration());
-    world.printCurrentGeneration();
+    // world.printCurrentGeneration();
   }, [world]);
   const createNextGeneration = () => {
     const nextGrid = world.getNextGeneration(grid);
     // replace the old generation with the new values
     setGrid(nextGrid);
-    world.printCurrentGeneration();
+    // world.printCurrentGeneration();
   }
   const updateCell = (coordinates, value) => {
-    console.log(coordinates, value);
     const updatedGrid = world.getUpdatedGeneration(coordinates, value);
     setGrid(updatedGrid);
-    world.printCurrentGeneration();
+    // world.printCurrentGeneration();
   }
   return (
     <div className="App">
