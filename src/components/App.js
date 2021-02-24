@@ -6,6 +6,8 @@ import './App.css';
 // todo create new file for world copying from this one in order to keep the same
 // indentation
 
+// todo add a screenshot to the readme file
+
 function App() {
   // state variables
   const [grid, setGrid] = useState([]);
@@ -45,12 +47,19 @@ function App() {
     }
   }
   const handleStart = () => {
+    // based on https://dev.to/abdulbasit313/how-to-develop-a-stopwatch-in-react-js-with-custom-hook-561b
+    // with setInterval it's not easy to manage the state
+    // but luckily the useState hook is passing the current state
+    // so we can use it to compute its next state (in both setTimer and setGrid)
+    // -> logging the state inside setInterval (but outside the hooks) can give weird results
+    // but we are correctly updating the values
     setIsRunning(true);
     countRef.current = setInterval(() => {
       setTimer((timer) => {
         return timer + 1;
       });
       setGrid((grid) => {
+        // compute next generation based on the current one
         const nextGrid = world.getNextGeneration(grid);
         return nextGrid;
       });
