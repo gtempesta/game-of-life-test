@@ -1,6 +1,7 @@
 .Grid {
-  margin: 20px;
   border: 2px solid black;
+  width: 100%;
+  max-width: 640px;
 }
 
 .Grid-row{
