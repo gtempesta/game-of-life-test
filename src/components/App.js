@@ -7,12 +7,15 @@ import './App.css';
 // indentation
 
 function App() {
-  // Declare a new state variable, which we'll call "grid"
+  // state variables
   const [grid, setGrid] = useState([]);
+  const [cellQuantity] = useState(40);
   const [world] = useState(() => {
-    return new World(20, 20);
+    // using a callback to prevent the class from being initialized with every render
+    // https://stackoverflow.com/a/64131447/
+    return new World(cellQuantity, cellQuantity);
   });
-  // Similar to componentDidMount and componentDidUpdate:
+  // only executed when `world` is updated
   useEffect(() => {
     setGrid(world.getFirstGeneration());
     // world.printCurrentGeneration();
@@ -31,8 +34,9 @@ function App() {
   return (
     <div className="App">
       <main className="App-main">
-        <button onClick={createNextGeneration}>Next generation</button>
+        <h1>Conway's Game of Life</h1>
         <Grid currentGeneration={grid} updateCell={updateCell} />
+        <button onClick={createNextGeneration}>Next generation</button>
       </main>
     </div>
   );
