@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  padding: 20px;
   margin-left: 200px;
 }
 
@@ -38,4 +37,16 @@
 .App-controls button{
   margin: 12px 12px 12px 0;
   font-size: 16px;
+}
+
+h1{
+  font-size: 40px;
+  margin-top: 36px;
+  margin-bottom: 34px;
+}
+
+h2{
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 24px;
 }
