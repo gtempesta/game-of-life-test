@@ -91,7 +91,7 @@ function App() {
             <button onClick={handleClear} disabled={isRunning}>New Random Generation</button>
           </div>
           <p className="iterations">Generations: {formatTime()}</p>
-          <p className="explanation">Click on a cell while the simulation is not running if you want to flip its state</p>
+          <p className="explanation">Click on a cell if you want to flip its state <small>(only when the simulation is not running )</small></p>
         </div>
       </main>
     </div>
