@@ -28,10 +28,14 @@ function App() {
     // world.printCurrentGeneration();
   }, [world]);
   
-  const createNextGeneration = () => {
+  const handleNextGeneration = () => {
     const nextGrid = world.getNextGeneration(grid);
     // replace the old generation with the new values
     setGrid(nextGrid);
+    // update timer
+    setTimer((timer) => {
+      return timer + 1;
+    });
   }
   const updateCell = (coordinates, value) => {
     if (!isRunning) {
@@ -55,12 +59,18 @@ function App() {
 
   const handlePause = () => {
     clearInterval(countRef.current);
-    setTimer(0);
     setIsRunning(false);
   }
 
+  const handleClear = () => {
+    clearInterval(countRef.current);
+    setTimer(0);
+    setIsRunning(false);
+    setGrid(world.getFirstGeneration());
+  }
+
   const formatTime = () => {
-    return timer.toString().padStart(2, '0');
+    return timer.toString();
   }
 
   return (
@@ -68,11 +78,20 @@ function App() {
       <main className="App-main">
         <h1>Conway's Game of Life</h1>
         <Grid currentGeneration={grid} updateCell={updateCell} />
-        <p>{formatTime()}</p>
         <div className="App-controls">
-          <button onClick={handleStart}>Run</button>
-          <button onClick={handlePause}>Stop</button>
-          <button onClick={createNextGeneration} disabled={isRunning}>Next generation</button>
+          <h2>Controls</h2>
+          <div className="App-controls-row">
+            <button onClick={handleStart}>Run</button>
+            <button onClick={handlePause}>Stop</button>
+          </div>
+          <div className="App-controls-row">
+            <button onClick={handleNextGeneration} disabled={isRunning}>Next generation</button>
+          </div>
+          <div className="App-controls-row">
+            <button onClick={handleClear} disabled={isRunning}>New Random Generation</button>
+          </div>
+          <p className="iterations">Generations: {formatTime()}</p>
+          <p className="explanation">Click on a cell while the simulation is not running if you want to flip its state</p>
         </div>
       </main>
     </div>

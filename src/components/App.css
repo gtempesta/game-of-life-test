@@ -9,13 +9,33 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   padding: 20px;
+  margin-left: 200px;
+}
+
+.App-main .iterations{
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+}
+
+.App-main .explanation{
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .App-controls{
-  display: flex;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #1a31af;
+  padding: 40px;
+  text-align: left;
+  color: #fff;
+  max-width: 290px;
 }
 
 .App-controls button{
-  margin: 12px;
+  margin: 12px 12px 12px 0;
   font-size: 16px;
 }
