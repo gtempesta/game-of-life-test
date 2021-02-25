@@ -2,14 +2,15 @@ import Cell from './Cell';
 import './Grid.css';
 
 function Grid({currentGeneration, updateCell, isDrawing, setIsDrawing, isRunning}) {
-  const startDrawing = () => {
+  const handleMouseDown = () => {
     if (!isRunning) {
+      // set isDrawing to true, only if isRunning is false
       setIsDrawing(true);
     }
   }
   return (
     <div className={`Grid ${(isDrawing ? 'Grid-drawing' : '')} ${(isRunning ? 'Grid-running' : '')}`}
-      onMouseDown={startDrawing}>
+      onMouseDown={handleMouseDown}>
       <div className="Grid-main">
         {currentGeneration.map((row, i) => {
           return (

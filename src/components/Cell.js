@@ -9,6 +9,7 @@ function Cell({value, updateCell, coords, isDrawing}) {
   }
   const handleMouseEnter = () => {
     if (isDrawing) {
+      // drag with the mouse clicked
       updateCell(coords, 1);
     }
   }
