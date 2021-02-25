@@ -113,7 +113,7 @@ function App() {
             <p>Tips:</p>
             <ul>
               <li>Click on a cell if you want to flip its state, or </li>
-              <li>Click and drag the mouse if you want to give life to specific cells</li>
+              <li>Click and drag the mouse if you want to give life to specific cells (only on desktop)</li>
             </ul>
             <small>(only when the simulation is not running )</small></div>
         </div>
