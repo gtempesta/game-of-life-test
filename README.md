@@ -4,11 +4,11 @@
 
 # Resources
 
-The main logic of the app was inspired by the video and the code in this page https://thecodingtrain.com/CodingChallenges/085-the-game-of-life.html. 
+- The main logic of the app was inspired by the video and the code in this page https://thecodingtrain.com/CodingChallenges/085-the-game-of-life.html. 
 
-The way in which the timer is configured comes from this tutorial: [How to develop a Stopwatch in React JS with custom hook](https://dev.to/abdulbasit313/how-to-develop-a-stopwatch-in-react-js-with-custom-hook-561b).
+- The way in which the timer is configured comes from this tutorial: [How to develop a Stopwatch in React JS with custom hook](https://dev.to/abdulbasit313/how-to-develop-a-stopwatch-in-react-js-with-custom-hook-561b).
 
-In this SO answer [useState with `new` keyword as parameter](https://stackoverflow.com/questions/64131341/usestate-with-new-keyword-as-parameter/64131447) I have found out how to declare a class in a functional React component.
+- In this SO answer [useState with `new` keyword as parameter](https://stackoverflow.com/questions/64131341/usestate-with-new-keyword-as-parameter/64131447) I have found out how to declare a class in a functional React component.
 
 # Reasoning
 
