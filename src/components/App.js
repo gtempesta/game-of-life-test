@@ -86,7 +86,7 @@ function App() {
   }
 
   return (
-    <div className="App" onMouseUp={finishDrawing} onTouchEnd={finishDrawing}>
+    <div className="App" onMouseUp={finishDrawing}>
       <main className="App-main">
         <h1>Conway's Game of Life</h1>
         <Grid

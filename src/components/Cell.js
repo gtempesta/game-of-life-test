@@ -2,22 +2,25 @@ import './Cell.css';
 
 function Cell({value, updateCell, coords, isDrawing}) {
   const isAlive = value === 1;
-  const updateCellValue = () => {
+  const handleClick = () => {
     // this will flip the value
     const updatedValue = 1 - value;
     updateCell(coords, updatedValue);
   }
-  const drawCell = () => {
+  const handleMouseEnter = () => {
     if (isDrawing) {
       updateCell(coords, 1);
     }
   }
+  const handleTouchMove = () => {
+    updateCell(coords, 1);
+  }
   return (
     <span
       className={`Cell ${(isAlive ? 'Cell-alive' : '')}`}
-      onClick={updateCellValue}
-      onMouseEnter={drawCell}
-      onTouchMove={drawCell}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onTouchMove={handleTouchMove}
       >
     </span>
   );

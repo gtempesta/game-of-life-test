@@ -2,7 +2,13 @@
   display: inline-block;
   border: 1px solid black;
   flex-grow: 1;
-  aspect-ratio: 1/1;
+  /* aspect-ratio: 1/1; */ /* not supported in Safari */
+}
+
+.Cell:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 
 @media (min-width: 992px) {

@@ -5,16 +5,9 @@ function Grid({currentGeneration, updateCell, isDrawing, setIsDrawing, isRunning
   const startDrawing = () => {
     setIsDrawing(true);
   }
-  const finishDrawing = () => {
-    setIsDrawing(false);
-  }
   return (
     <div className={`Grid ${(isDrawing ? 'Grid-drawing' : '')} ${(isRunning ? 'Grid-running' : '')}`}
-      onMouseDown={startDrawing}
-      onTouchStart={startDrawing}
-      onMouseUp={finishDrawing}
-      onTouchEnd={finishDrawing}
-    >
+      onMouseDown={startDrawing}>
       <div className="Grid-main">
         {currentGeneration.map((row, i) => {
           return (
