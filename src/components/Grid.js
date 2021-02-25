@@ -1,15 +1,15 @@
 import Cell from './Cell';
 import './Grid.css';
 
-function Grid({currentGeneration, updateCell, drawing, setDrawing}) {
+function Grid({currentGeneration, updateCell, isDrawing, setIsDrawing, isRunning}) {
   const startDrawing = () => {
-    setDrawing(true);
+    setIsDrawing(true);
   }
   const finishDrawing = () => {
-    setDrawing(false);
+    setIsDrawing(false);
   }
   return (
-    <div className={`Grid ${(drawing ? 'Grid-cursor' : '')}`}
+    <div className={`Grid ${(isDrawing ? 'Grid-drawing' : '')} ${(isRunning ? 'Grid-running' : '')}`}
       onMouseDown={startDrawing}
       onTouchStart={startDrawing}
       onMouseUp={finishDrawing}
@@ -25,7 +25,7 @@ function Grid({currentGeneration, updateCell, drawing, setDrawing}) {
                   value={cell}
                   updateCell={updateCell}
                   coords={{x: i, y: j}}
-                  drawing={drawing}
+                  isDrawing={isDrawing}
                 />;
               })}
             </div>

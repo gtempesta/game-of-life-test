@@ -1,6 +1,6 @@
 import './Cell.css';
 
-function Cell({value, updateCell, coords, drawing}) {
+function Cell({value, updateCell, coords, isDrawing}) {
   const isAlive = value === 1;
   const updateCellValue = () => {
     // this will flip the value
@@ -8,7 +8,7 @@ function Cell({value, updateCell, coords, drawing}) {
     updateCell(coords, updatedValue);
   }
   const drawCell = () => {
-    if (drawing) {
+    if (isDrawing) {
       updateCell(coords, 1);
     }
   }

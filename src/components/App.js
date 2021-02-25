@@ -21,7 +21,7 @@ function App() {
   });
 
   // drawing state lets as interact with the grid on drag
-  const [drawing, setDrawing] = useState(false);
+  const [isDrawing, setIsDrawing] = useState(false);
   
   // only executed when `world` is updated
   useEffect(() => {
@@ -82,14 +82,20 @@ function App() {
   }
 
   const finishDrawing = () => {
-    setDrawing(false);
+    setIsDrawing(false);
   }
 
   return (
     <div className="App" onMouseUp={finishDrawing} onTouchEnd={finishDrawing}>
       <main className="App-main">
         <h1>Conway's Game of Life</h1>
-        <Grid currentGeneration={grid} updateCell={updateCell} drawing={drawing} setDrawing={setDrawing} />
+        <Grid
+          currentGeneration={grid}
+          updateCell={updateCell}
+          isDrawing={isDrawing}
+          setIsDrawing={setIsDrawing}
+          isRunning={isRunning}
+        />
         <div className="App-controls">
           <h2>Controls</h2>
           <div className="App-controls-row">

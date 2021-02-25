@@ -15,8 +15,12 @@
   }
 }
 
-.Grid-cursor{
+.Grid-drawing{
   cursor: crosshair;
+}
+
+.Grid-running{
+  cursor: not-allowed;
 }
 
 .Grid-main {
