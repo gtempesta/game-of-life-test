@@ -1,9 +1,20 @@
 import Cell from './Cell';
 import './Grid.css';
 
-function Grid({currentGeneration, updateCell}) {
+function Grid({currentGeneration, updateCell, drawing, setDrawing}) {
+  const startDrawing = () => {
+    setDrawing(true);
+  }
+  const finishDrawing = () => {
+    setDrawing(false);
+  }
   return (
-    <div className="Grid">
+    <div className="Grid"
+      onMouseDown={startDrawing}
+      onTouchStart={startDrawing}
+      onMouseUp={finishDrawing}
+      onTouchEnd={finishDrawing}
+    >
       <div className="Grid-main">
         {currentGeneration.map((row, i) => {
           return (
@@ -14,6 +25,7 @@ function Grid({currentGeneration, updateCell}) {
                   value={cell}
                   updateCell={updateCell}
                   coords={{x: i, y: j}}
+                  drawing={drawing}
                 />;
               })}
             </div>
