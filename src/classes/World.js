@@ -24,7 +24,7 @@ class World {
   countLivingNeighbours(grid, x, y) {
     // x and y are the i and j of the other loop
     let sum = 0;
-    let neighboursCount = 0;
+    // let neighboursCount = 0;
     for (let i = -1; i < 2; i += 1) {
       for (let j = -1; j < 2; j += 1) {
         // if we are at the edges, the value would be undefined
@@ -35,7 +35,7 @@ class World {
         if (!isCurrentCell) {
           // console.log('neighbours cells are', value);
           sum += value;
-          neighboursCount += 1;
+          // neighboursCount += 1;
         } else {
           // console.log('current cell is', value);
         }
