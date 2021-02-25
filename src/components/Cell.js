@@ -1,8 +1,5 @@
 import './Cell.css';
 
-// todo add click functionality
-// to active cell (updating the state)
-
 function Cell({value, updateCell, coords}) {
   const isAlive = value === 1;
   const updateCellValue = () => {
