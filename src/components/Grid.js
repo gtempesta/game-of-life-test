@@ -3,7 +3,9 @@ import './Grid.css';
 
 function Grid({currentGeneration, updateCell, isDrawing, setIsDrawing, isRunning}) {
   const startDrawing = () => {
-    setIsDrawing(true);
+    if (!isRunning) {
+      setIsDrawing(true);
+    }
   }
   return (
     <div className={`Grid ${(isDrawing ? 'Grid-drawing' : '')} ${(isRunning ? 'Grid-running' : '')}`}
