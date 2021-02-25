@@ -20,6 +20,15 @@
 .App-main .explanation{
   font-size: 16px;
   line-height: 1.7;
+  max-width: 210px;
+  text-align: left;
+  margin: auto;
+}
+
+@media (min-width: 992px) {
+  .App-main .explanation{
+    max-width: none;
+  }
 }
 
 .App-controls{
@@ -64,4 +73,8 @@ h2{
   font-size: 30px;
   margin-top: 0;
   margin-bottom: 24px;
+}
+
+ul{
+  padding-left: 18px;
 }

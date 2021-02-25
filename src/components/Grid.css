@@ -15,6 +15,10 @@
   }
 }
 
+.Grid-cursor{
+  cursor: crosshair;
+}
+
 .Grid-main {
   border: 1px solid black;
   width: 100%;

@@ -62,7 +62,7 @@ function App() {
         const nextGrid = world.getNextGeneration(grid);
         return nextGrid;
       });
-    }, 100);
+    }, 40);
   }
 
   const handlePause = () => {
@@ -103,7 +103,13 @@ function App() {
             <button onClick={handleClear} disabled={isRunning}>New Random Generation</button>
           </div>
           <p className="iterations">Generations: {formatTime()}</p>
-          <p className="explanation">Click on a cell if you want to flip its state, or click and drag the mouse if you want to give life to specific cells <small>(only when the simulation is not running )</small></p>
+          <div className="explanation">
+            <p>Tips:</p>
+            <ul>
+              <li>Click on a cell if you want to flip its state, or </li>
+              <li>Click and drag the mouse if you want to give life to specific cells</li>
+            </ul>
+            <small>(only when the simulation is not running )</small></div>
         </div>
       </main>
     </div>

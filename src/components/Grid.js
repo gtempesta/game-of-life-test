@@ -9,7 +9,7 @@ function Grid({currentGeneration, updateCell, drawing, setDrawing}) {
     setDrawing(false);
   }
   return (
-    <div className="Grid"
+    <div className={`Grid ${(drawing ? 'Grid-cursor' : '')}`}
       onMouseDown={startDrawing}
       onTouchStart={startDrawing}
       onMouseUp={finishDrawing}
