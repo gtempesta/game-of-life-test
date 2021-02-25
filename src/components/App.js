@@ -14,13 +14,14 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
   const countRef = useRef(null);
 
+  // class to compute the grids
   const [world] = useState(() => {
     // using a callback to prevent the class from being initialized with every render
     // https://stackoverflow.com/a/64131447/
     return new World(40, 40);
   });
 
-  // drawing state lets as interact with the grid on drag
+  // drawing state lets us interact with the grid on drag
   const [isDrawing, setIsDrawing] = useState(false);
   
   // only executed when `world` is updated
@@ -29,6 +30,7 @@ function App() {
     // world.printCurrentGeneration();
   }, [world]);
   
+  // compute a new generation based on the current one
   const handleNextGeneration = () => {
     const nextGrid = world.getNextGeneration(grid);
     // replace the old generation with the new values
@@ -38,6 +40,8 @@ function App() {
       return timer + 1;
     });
   }
+
+  // update a single cell in the current grid
   const updateCell = (coordinates, value) => {
     if (!isRunning) {
       // only update if not running
@@ -47,14 +51,13 @@ function App() {
   }
   const handleStart = () => {
     // based on https://dev.to/abdulbasit313/how-to-develop-a-stopwatch-in-react-js-with-custom-hook-561b
-    // with setInterval it's not easy to manage the state
+    // it's not easy to manage the state inside setInterval 
     // but luckily the useState hook is passing the current state
     // so we can use it to compute its next state (in both setTimer and setGrid)
-    // -> logging the state inside setInterval (but outside the hooks) can give weird results
-    // but we are correctly updating the values
     setIsRunning(true);
     countRef.current = setInterval(() => {
       setTimer((timer) => {
+        // add one to current timer
         return timer + 1;
       });
       setGrid((grid) => {
@@ -66,27 +69,26 @@ function App() {
   }
 
   const handlePause = () => {
+    // stop and clear the timer
     clearInterval(countRef.current);
     setIsRunning(false);
   }
 
   const handleClear = () => {
+    // stop, clear the timer, set count to 0 and generate a new random state
     clearInterval(countRef.current);
     setTimer(0);
     setIsRunning(false);
     setGrid(world.getFirstGeneration());
   }
 
-  const formatTime = () => {
-    return timer.toString();
-  }
-
-  const finishDrawing = () => {
+  // any mouse up will set isDrawing to false
+  const handleMouseUp = () => {
     setIsDrawing(false);
   }
 
   return (
-    <div className="App" onMouseUp={finishDrawing}>
+    <div className="App" onMouseUp={handleMouseUp}>
       <main className="App-main">
         <h1>Conway's Game of Life</h1>
         <Grid
@@ -108,11 +110,11 @@ function App() {
           <div className="App-controls-row">
             <button onClick={handleClear} disabled={isRunning}>New Random Generation</button>
           </div>
-          <p className="iterations">Generations: {formatTime()}</p>
+          <p className="iterations">Generations: {timer}</p>
           <div className="explanation">
             <p>Tips:</p>
             <ul>
-              <li>Click on a cell if you want to flip its state, or </li>
+              <li>Click on a cell if you want to flip its state</li>
               <li>Click and drag the mouse if you want to give life to specific cells (only on desktop)</li>
             </ul>
             <small>(only when the simulation is not running )</small></div>
