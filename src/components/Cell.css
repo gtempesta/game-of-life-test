@@ -1,8 +1,14 @@
 .Cell {
   display: inline-block;
-  border: 2px solid black;
-  width: 2.5%;
+  border: 1px solid black;
+  flex-grow: 1;
   aspect-ratio: 1/1;
+}
+
+@media (min-width: 992px) {
+  .Cell{
+    border: 2px solid black;
+  }
 }
 
 .Cell-alive{

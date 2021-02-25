@@ -1,7 +1,30 @@
-.Grid {
-  border: 2px solid black;
+.Grid{
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+@media (min-width: 992px) {
+  .Grid{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.Grid-main {
+  border: 1px solid black;
   width: 100%;
   max-width: 640px;
+}
+
+@media (min-width: 992px) {
+  .Grid-main{
+    border: 2px solid black;
+  }
 }
 
 .Grid-row{

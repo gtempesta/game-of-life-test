@@ -3,15 +3,11 @@ import World from '../classes/World';
 import Grid from './Grid';
 import './App.css';
 
-// todo create new file for world copying from this one in order to keep the same
-// indentation
-
 // todo add a screenshot to the readme file
 
 function App() {
   // state variables
   const [grid, setGrid] = useState([]);
-  const [cellQuantity] = useState(40);
   
   // timer variables
   const [timer, setTimer] = useState(0)
@@ -21,7 +17,7 @@ function App() {
   const [world] = useState(() => {
     // using a callback to prevent the class from being initialized with every render
     // https://stackoverflow.com/a/64131447/
-    return new World(cellQuantity, cellQuantity);
+    return new World(40, 40);
   });
   
   // only executed when `world` is updated
