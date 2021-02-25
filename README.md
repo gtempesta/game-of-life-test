@@ -2,6 +2,8 @@
 
 ![App screenshot](screen2.png)
 
+You can see the live app here: https://game-of-life-test.netlify.app/
+
 # Resources
 
 - The main logic of the app was inspired by the video and the code in this page https://thecodingtrain.com/CodingChallenges/085-the-game-of-life.html. 
