@@ -21,7 +21,7 @@ function App() {
   });
 
   // drawing state lets as interact with the grid on drag
-  const [drawing, setDrawing] = useState(false);
+  const [isDrawing, setIsDrawing] = useState(false);
   
   // only executed when `world` is updated
   useEffect(() => {
@@ -62,7 +62,7 @@ function App() {
         const nextGrid = world.getNextGeneration(grid);
         return nextGrid;
       });
-    }, 100);
+    }, 40);
   }
 
   const handlePause = () => {
@@ -82,14 +82,20 @@ function App() {
   }
 
   const finishDrawing = () => {
-    setDrawing(false);
+    setIsDrawing(false);
   }
 
   return (
     <div className="App" onMouseUp={finishDrawing} onTouchEnd={finishDrawing}>
       <main className="App-main">
         <h1>Conway's Game of Life</h1>
-        <Grid currentGeneration={grid} updateCell={updateCell} drawing={drawing} setDrawing={setDrawing} />
+        <Grid
+          currentGeneration={grid}
+          updateCell={updateCell}
+          isDrawing={isDrawing}
+          setIsDrawing={setIsDrawing}
+          isRunning={isRunning}
+        />
         <div className="App-controls">
           <h2>Controls</h2>
           <div className="App-controls-row">
@@ -103,7 +109,13 @@ function App() {
             <button onClick={handleClear} disabled={isRunning}>New Random Generation</button>
           </div>
           <p className="iterations">Generations: {formatTime()}</p>
-          <p className="explanation">Click on a cell if you want to flip its state, or click and drag the mouse if you want to give life to specific cells <small>(only when the simulation is not running )</small></p>
+          <div className="explanation">
+            <p>Tips:</p>
+            <ul>
+              <li>Click on a cell if you want to flip its state, or </li>
+              <li>Click and drag the mouse if you want to give life to specific cells</li>
+            </ul>
+            <small>(only when the simulation is not running )</small></div>
         </div>
       </main>
     </div>
