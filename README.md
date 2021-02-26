@@ -102,7 +102,10 @@ For example the `updateCell` function is defined in `App.js`, then is passed dow
 ```
 
 ## Drawing
-The `isDrawing` state is set to true by a `mouseDown` event on the grid, but can be set to false by any `mouseUp` event in the application. When `isDrawing` is set to true we can simulate drawing by listening to a `mouseEnter` event inside the single cells. 
+The `isDrawing` state is set to true by a `mouseDown` event on the grid, but can be set to false by any `mouseUp` event in the application. When `isDrawing` is set to true we can simulate drawing by listening to a `mouseEnter` event inside the single cells.
+
+## Mobile
+The app is responsive and can be viewed from mobile devices, but the drawing functionality is missing. 
 
 # Possible improvements
 
