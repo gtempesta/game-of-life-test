@@ -60,7 +60,7 @@ For example in the `computeNextGeneration` function the next generation is compu
 All the logic related to the cells has been placed in a class called World. This class is keeping an internal array with the states but also returning it to the methods that update it. The functions used to create 2D arrays and to generate random numbers have been put into separate modules. 
 
 ## Main logic
-The main logic is managed in the `App.js` file by two React hooks: one that sets the state with `grid` and `setGrid` and another that instantiates the World class into another variable, `world`. 
+The main logic is managed in the `App.js` file by two React hooks: one that manages the state with `grid` and `setGrid` and another that instantiates the World class into another variable, `world`. 
 
 Once we have this in place we can call all the methods on the `world` instance and update the internal state, like this: 
 ```javascript
@@ -79,17 +79,37 @@ The state of the grid is passed to the `Grid` component through the `currentGene
 
 Other props are used to pass the current state of the application (`isRunning`, `isDrawing`) and to pass two functions that can be called by child components (`Grid` or `Cell`). 
 
-For example the `updateCell` function is defined in `App.js`, then is passed down as a prop and is called by the `Cell` component. The coordinates passed by the `Cell` component in the `updateCell` function are passed themselves as props by the `Grid` component, otherwise the `Cell` itself wouldn't know its own coordinates.  
+For example the `updateCell` function is defined in `App.js`, then is passed down as a prop and is called by the `Cell` component. The coordinates passed by the `Cell` component in the `updateCell` function are passed themselves as props by the `Grid` component, otherwise the `Cell` itself wouldn't know its own coordinates.
+
+```jsx
+<div className="Grid-main">
+  {currentGeneration.map((row, i) => {
+    return (
+      <div className="Grid-row" key={i}>
+        {row.map((cell, j) => {
+          return <Cell
+            key={`${i}-${j}`}
+            value={cell}
+            updateCell={updateCell}
+            coords={{x: i, y: j}}  {/* 👈 here we pass the coordinates to the `Cell` component */}
+            isDrawing={isDrawing}
+          />;
+        })}
+      </div>
+    );
+  })}
+</div>
+```
 
 ## Drawing
 The `isDrawing` state is set to true by a `mouseDown` event on the grid, but can be set to false by any `mouseUp` event in the application. When `isDrawing` is set to true we can simulate drawing by listening to a `mouseEnter` event inside the single cells. 
 
 # Possible improvements
 
-## Touch devices
+### Touch devices
 I tried to port the drawing functionality to touch devices but it didn't work as expected and I didn't have enough time to work on it.
 
-## `requestAnimationFrame`
+### `requestAnimationFrame`
 I'm not sure, but maybe instead of `setInterval` maybe I could have used `requestAnimationFrame`. I should investigate this because maybe this API is intended for animations and wouldn't suit this use case. 
 
 # How to run
