@@ -68,18 +68,26 @@ function App() {
     }, 40);
   }
 
-  const handlePause = () => {
+  const handleStop = () => {
     // stop and clear the timer
     clearInterval(countRef.current);
     setIsRunning(false);
   }
 
-  const handleClear = () => {
+  const handleNewGeneration = () => {
     // stop, clear the timer, set count to 0 and generate a new random state
     clearInterval(countRef.current);
     setTimer(0);
     setIsRunning(false);
     setGrid(world.getFirstGeneration());
+  }
+  
+  const handleClearCells = () => {
+    // stop, clear the timer, set count to 0 and generate a new empty state
+    clearInterval(countRef.current);
+    setTimer(0);
+    setIsRunning(false);
+    setGrid(world.getEmptyGeneration());
   }
 
   // any mouse up will set isDrawing to false
@@ -102,13 +110,16 @@ function App() {
           <h2>Controls</h2>
           <div className="App-controls-row">
             <button onClick={handleStart}>Run</button>
-            <button onClick={handlePause}>Stop</button>
+            <button onClick={handleStop}>Stop</button>
           </div>
           <div className="App-controls-row">
-            <button onClick={handleNextGeneration} disabled={isRunning}>Next generation</button>
+            <button onClick={handleNextGeneration} disabled={isRunning}>Next generation »</button>
           </div>
           <div className="App-controls-row">
-            <button onClick={handleClear} disabled={isRunning}>New Random Generation</button>
+            <button onClick={handleNewGeneration} disabled={isRunning}>New Random Generation</button>
+          </div>
+          <div className="App-controls-row">
+            <button onClick={handleClearCells} disabled={isRunning}>Clear All Cells</button>
           </div>
           <p className="iterations">Generations: {timer}</p>
           <div className="explanation">
