@@ -14,7 +14,7 @@ You can see the live app here: https://game-of-life-test.netlify.app/
 
 # Reasoning
 
-The current state of the cells is stored in a two dimensional array. Every cell can be alive or dead. A dead cell will have a value of 0, while a living cell will have a value of 1. 
+The current state of the cells is stored in a two-dimensional array. Every cell can be alive or dead. A dead cell will have a value of 0, while a living cell will have a value of 1. 
 
 The first state of the application is computed with a random function that assigns a 0 or a 1 to each value in the two-dimensional array. 
 
@@ -22,7 +22,7 @@ Once we have created the array to store the state of all the cells we need to lo
 
 ![App screenshot](screen3.png)
 
-In order to compute the number of the neighbors we need to loop over every cell from the index of -1, -1 to the index of 1, 1 relative to the cell that we are considering, remembering not to count the state of the cell itself.
+In order to compute the number of the neighbors we need to loop around every cell from the index of -1, -1 to the index of 1, 1 relative to the cell that we are considering, remembering not to count the state of the cell itself.
 
 The looping part is accomplished with two nested loops which go from one index to the next.
 
@@ -37,7 +37,7 @@ for (let i = -1; i < 2; i += 1) {
 ```
 
 We also need to be careful that there can be `undefined` indexes when we are looping close to the edges. 
-Luckily there are two recent additions of ES6 which can help us: the nullish coalescence operator and the optional chaining. 
+Luckily there are two recent additions of ES6 which can help us: the nullish coalescence operator and the optional chaining operator. 
 
 ```javascript
 const value = grid?.[x + i]?.[y + j] ?? 0;
@@ -55,14 +55,14 @@ For example in the `computeNextGeneration` function the next generation is compu
 
 # Application structure
 
-Class with cells
-Hooks in React
-State passed down to cells
+Class with cells\
+Hooks in React\
+State passed down to cells\
 Methods defined in App
 
 # Possible improvements
 
-Touch functionality -> tried but needs more work
+Touch functionality -> tried but needs more work\
 
 Maybe with requestAnimationFrame would be better than setTimeout?
 
@@ -82,6 +82,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## Other Scripts
+### Other Scripts
 You can also run `npm run build` if you need an optimzed build for production. 
 
