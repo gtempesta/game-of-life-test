@@ -115,6 +115,9 @@ I tried to port the drawing functionality to touch devices but it didn't work as
 ### `requestAnimationFrame`
 I'm not sure, but maybe instead of `setInterval` maybe I could have used `requestAnimationFrame`. I should investigate this because maybe this API is intended for animations and wouldn't suit this use case. 
 
+### Further configuration in the UI
+The app could let the user configure the grid with new settings like the number of cells, their size, or the speed of the animation.
+
 # How to run
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
