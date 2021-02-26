@@ -10,9 +10,9 @@ class World {
   }
 
   // return a new grid with random paramters
-  computeRandomGrid(grid) {
+  computeRandomGrid() {
     // start by filling the currentState with random values
-    const currentGrid = grid.map((row) => {
+    const currentGrid = this.grid.map((row) => {
       return row.map(() => {
         return getRandomState();
       })
@@ -86,7 +86,7 @@ class World {
 
   // compute a random grid and return it 
   getFirstGeneration() {
-    this.grid = this.computeRandomGrid(this.grid);
+    this.grid = this.computeRandomGrid();
     return this.grid;
   }
 
@@ -102,6 +102,12 @@ class World {
     // return a new array with only this value updated
     // otherwise react won't detect the difference
     this.grid = this.computeSingleCellUpdate(coordinates, value);
+    return this.grid;
+  }
+
+  getEmptyGeneration() {
+    // create a new empty array
+    this.grid = create2DArray(this.width, this.height);
     return this.grid;
   }
 
