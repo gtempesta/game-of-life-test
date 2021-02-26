@@ -10,7 +10,7 @@ function App() {
   const [grid, setGrid] = useState([]);
   
   // timer variables
-  const [timer, setTimer] = useState(0)
+  const [timer, setTimer] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const countRef = useRef(null);
 
