@@ -60,7 +60,7 @@ For example in the `computeNextGeneration` function the next generation is compu
 All the logic related to the cells has been placed in a class called World. This class is keeping an internal array with the states but also returning it to the methods that update it. The functions used to create 2D arrays and to generate random numbers have been put into separate modules. 
 
 ## Main logic
-The main logic is managed in the `App.js` file by two React hooks: one that manages the state with `grid` and `setGrid` and another that instantiates the World class into another variable, `world`. 
+The main logic is defined in the `App.js` file by two React hooks: one that manages the state with `grid` and `setGrid` and another that instantiates the World class into another variable, `world`.
 
 Once we have this in place we can call all the methods on the `world` instance and update the internal state, like this: 
 ```javascript
