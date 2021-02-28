@@ -18,13 +18,13 @@ The current state of the cells is stored in a two-dimensional array. Every cell 
 
 The first state of the application is computed with a random function that assigns a 0 or a 1 to each value in the two-dimensional array. 
 
-Once we have created the array to store the state of all the cells we need to loop over all of them in order to compute the number of neighbors it has. 
+Once we have created the array to store the state of all the cells, we need to loop over all of them in order to compute the number of neighbors it has. 
 
 ![App screenshot](screen3.png)
 
-In order to compute the number of the neighbors we need to loop around every cell from the index of -1, -1 to the index of 1, 1 relative to the cell that we are considering, remembering not to count the state of the cell itself.
+This can be accomplished by creating a second loop around every cell, which will go from the index of -1, -1 to the index of 1, 1 relative to the cell that we are considering, remembering not to count the state of the cell itself.
 
-The looping part is accomplished with two nested loops which go from one index to the next.
+The looping part is composed by two nested loops which go from one index to the next.
 
 ```javascript
 for (let i = -1; i < 2; i += 1) {
