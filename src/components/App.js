@@ -18,7 +18,7 @@ function App() {
   const [world] = useState(() => {
     // using a callback to prevent the class from being initialized with every render
     // https://stackoverflow.com/a/64131447/
-    return new World(40, 40);
+    return new World(40, 30);
   });
 
   // drawing state lets us interact with the grid on drag
@@ -27,7 +27,7 @@ function App() {
   // only executed when `world` is updated
   useEffect(() => {
     setGrid(world.getFirstGeneration());
-    // world.printCurrentGeneration();
+    world.printCurrentGeneration();
   }, [world]);
   
   // compute a new generation based on the current one
@@ -65,7 +65,7 @@ function App() {
         const nextGrid = world.getNextGeneration(grid);
         return nextGrid;
       });
-    }, 40);
+    }, 700);
   }
 
   const handleStop = () => {

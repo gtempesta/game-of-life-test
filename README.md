@@ -18,13 +18,13 @@ The current state of the cells is stored in a two-dimensional array. Every cell 
 
 The first state of the application is computed with a random function that assigns a 0 or a 1 to each value in the two-dimensional array. 
 
-Once we have created the array to store the state of all the cells we need to loop over all of them in order to compute the number of neighbors it has. 
+Once we have created the array to store the state of all the cells, we need to loop over all of them in order to compute the number of neighbors it has. 
 
 ![App screenshot](screen3.png)
 
-In order to compute the number of the neighbors we need to loop around every cell from the index of -1, -1 to the index of 1, 1 relative to the cell that we are considering, remembering not to count the state of the cell itself.
+This can be accomplished by creating a second loop around every cell, which will go from the index of -1, -1 to the index of 1, 1 relative to the cell that we are considering, remembering not to count the state of the cell itself.
 
-The looping part is accomplished with two nested loops which go from one index to the next.
+The looping part is composed by two nested loops which go from one index to the next.
 
 ```javascript
 for (let i = -1; i < 2; i += 1) {
@@ -42,10 +42,10 @@ Luckily there are two recent additions of ES6 which can help us: the nullish coa
 ```javascript
 const value = grid?.[x + i]?.[y + j] ?? 0;
 ```
-In this way we are sure that the code won’t break when it finds `undefined` indexes and we can count `undefined` values as zeroes, because we are counting living cells (which count as 1). 
+In this way we are sure that the code won’t break when it finds `undefined` indexes. Also, we can consider `undefined` values as zeroes, because we are counting living cells (each with a value of 1).
 
-After we have counted the neighbors for each cell, the reasoning (based on Daniel Shiffman’s video) is the following: 
-- passage from life to death: if a cell is alive, it will die if the number of neighbors is less than 2 or more than 3. 
+After we have found all the neighbors for each cell, the reasoning (based on Daniel Shiffman’s video) is the following: 
+- passage from life to death: if a cell is alive, it will die if the number of neighbors is less than 2 or more than 3
 - from death to life: if a cell is dead, it will come to life if it has exactly 3 neighbors
 - all the other cells keep their state
 
@@ -113,7 +113,7 @@ The app is responsive and can be viewed from mobile devices, but the drawing fun
 I tried to port the drawing functionality to touch devices but it didn't work as expected and I didn't have enough time to work on it.
 
 ### `requestAnimationFrame`
-I'm not sure, but maybe instead of `setInterval` maybe I could have used `requestAnimationFrame`. I should investigate this because maybe this API is intended for animations and wouldn't suit this use case. 
+I'm not sure, but instead of `setInterval` I could have used `requestAnimationFrame`. I should investigate this because this API is intended for animations and maybe wouldn't suit this use case. 
 
 ### Further configuration in the UI
 The app could let the user configure the grid with new settings like the number of cells, their size, or the speed of the animation.
